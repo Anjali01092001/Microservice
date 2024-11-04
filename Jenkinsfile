@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Hello, World!'
+                script {
+                    sh 'docker build -t anjalihubdocker/adservice:latest .'
+                }
             }
         }
     }
