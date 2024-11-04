@@ -5,7 +5,9 @@ pipeline {
         stage('Build & Tag Docker Image') {
             steps {
                 script {                 
-                        sh "docker build -t adserviceimage ."                    
+                        withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                        sh "docker build -t anjalihubdocker/cartservice:latest ."
+                    }                   
                 }
             }
         }
