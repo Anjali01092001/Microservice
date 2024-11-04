@@ -1,4 +1,4 @@
-pipeline { 
+pipeline {
     agent any
 
     stages {
@@ -6,20 +6,13 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker build -t anjalihubdocker/shippingservice:latest ."
+                        sh "docker build -t anjalihubdocker/checkoutservice:latest ."
+                        //sh "sudo docker push anjalihubdocker/adservice:latest"
                     }
                 }
             }
         }
         
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push anjalihubdocker/shippingservice:latest "
-                    }
-                }
-            }
-        }
+        
     }
 }
