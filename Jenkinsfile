@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "sudo chown ubuntu /var/run/docker.sock"
+                        sh "sudo chmod 666 /var/run/docker.sock"
                         sh "docker build -t anjalihubdocker/adservice:latest ."
                     }
                 }
