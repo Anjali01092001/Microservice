@@ -6,20 +6,13 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker build -t anjalihubdocker/frontend:latest ."
+                        sh "docker build -t anjalihubdocker/checkoutservice:latest ."
+                        //sh "sudo docker push anjalihubdocker/adservice:latest"
                     }
                 }
             }
         }
         
-        stage('Push Docker Image') {
-            steps {
-                script {
-                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push anjalihubdocker/frontend:latest"
-                    }
-                }
-            }
-        }
+        
     }
 }
